@@ -11,6 +11,75 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+}
+
+#root {
+  margin: 0 auto;
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.App{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 75%;
+  height: 100%;
+  margin: 0 auto;
+  gap: 20px;
+  margin-top: 1em;
+}
+
+.pickedColor{
+  box-shadow: 5px 5px 10px 1px #545454;
+  border-radius: 10px 10px 10px 10px;
+  text-align: center;
+  align-content: center;
+  margin: 0 auto;
+  font-weight: 500;
+}
+
+.savedColorsContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0 auto;
+  border: 2px solid #545454;
+  border-radius: 10px;
+  justify-content: left;
+}
+
+.savedColor{
+  min-width: 50px;
+  min-height: 50px;
+  margin: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  justify-content: left;
+}
+
+.sliders{
+  border: 2px solid #545454;
+  border-radius: 10px;
+  padding: 1.5em;
+  width: 50%;
+  margin: 0 auto;
+}
+
+input{
+  cursor: pointer;
+  width: 90%;
+}
+
+.buttonContainer{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
 }
 
 a {

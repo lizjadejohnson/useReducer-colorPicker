@@ -1,25 +1,28 @@
-import React from 'react'
+import React from 'react';
 
-const Hex = ({red, green, blue}) => {
-        const toHex = (colorValue) => {
-          const hex = colorValue.toString(16);
-          return hex.length === 1 ? '0' + hex : hex;
-        };
-      
-        // Convert each component to hex separately for clarity:
-        const redHex = toHex(red);
-        const greenHex = toHex(green);
-        const blueHex = toHex(blue);
-        const hexConcat = `#${redHex}${greenHex}${blueHex}`
-        
-        const copyToClipboard = () => {
-            navigator.clipboard.writeText(hexColor)
-                .then(() => alert('Color copied to clipboard!'))
-                .catch(err => console.error('Failed to copy text: ', err));
-        };
-  
-        return hexConcat;
+const Hex = ({ red, green, blue }) => {
+  const toHex = (num) => num.toString(16).padStart(2, '0');
+  const hex = `#${toHex(red)}${toHex(green)}${toHex(blue)}`;
 
+  // Function to determine luminance:
+  const luminance = (r, g, b) => {
+    const a = [r, g, b].map((v) => {
+      v /= 255;
+      return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    });
+    return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
+  };
+
+  // Determine if the color is dark:
+  const isDark = luminance(red, green, blue) < 0.5;
+
+  return (
+    <div style={{ color: isDark ? '#ffffff' : '#000000' }}>
+        Hex:
+        <br />
+      {hex}
+    </div>
+  );
 };
 
 export default Hex;
